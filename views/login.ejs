@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>MIDTERM</title>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+
+    <%- include('partials/_header') %>
+
+    <main style="margin: 1em;">
+      <h1>**MIDTERM** Login</h1>
+        <div class="form-group mb-2">
+          <form action="/login" method="POST">
+            <a>Enter Email</a>
+            <input type="email" name="email" placeholder="Enter Email Here">
+            <a>Enter Password</a>
+            <input type="password" name="password" placeholder="Enter Password Here">
+            <button type="submit" class="submit-btn"> Login </button>
+          </form>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
