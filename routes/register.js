@@ -9,25 +9,19 @@ module.exports = (router, database) => {
   });
   router.post("/", (req, res) => {
     const user = req.body;
-  // const user = req.body.name;
-  // const email = req.body.email;
-  // const password = req.body.password;
-  // console.log("user", user);
-  database.addUser(user)
+    database.addUser(user)
   .then(user => {
     if (!user) {
-      console.log("hello world");
-      res.send({error: "error"});
-      return;
+      return res.status(400).json({
+        status: 'error',
+        error: 'req body cannot be empty',
+      });
     }
-    req.session.userId = user.id;
-    console.log("UserId", req.session.userId);
-    console.log("UserID", req.session.userID);
-    res.send(":)");
+    return res.redirect("/");
   })
   .catch(e => {
-    res.redirect("/");
-    res.send(e) });
+    return res.send(e)
+  });
 
 });
 return router;
