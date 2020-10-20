@@ -7,7 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <% if (user) { %>
+          <form method="POST" action="/logout">
           <a class=“nav-item nav-link”><%= user.name%></a>
+          <button type="submit" class="btn btn-outline-secondary">Logout</button>
           <% } %>
         <a class="nav-item nav-link" href="/urls/new">My Tiles</a>
         <a class="nav-item nav-link" href="/urls/new">Create a Pin</a>

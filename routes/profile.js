@@ -1,21 +1,28 @@
 const express = require('express');
 const router  = express.Router();
 const { updateProfile } = require('../database');
+const { getUserWithId } = require('../database');
 
 module.exports = function(router, database) {
   router.get("/", (req, res) => {
-    console.log(database)
-    const templateVars = {
-      user: currentUser
+    const getUser =  function(userId) {
+      console.log(`fcuserId: ${userId}`)
+    return database.getUserWithId(userId)
+    }
+
+    const userId = req.session.userId;
+    getUser(userId)
+      .then(user => {
+        console.log(`lastuserId: ${userId}`)
+  const templateVars = {
+      user: user
     };
     res.render("profile", templateVars);
     });
+  });
 
     router.post("/", (req, res) => {
       const user = req.body;
-      console.log(`I AM THE USER: ${JSON.stringify(user)}`);
-      console.log(`I AM THE USER2: ${JSON.stringify(user)}`);
-      console.log(`I AM THE USER3: ${req.body.name}`);
       database.updateProfile(user)
     .then(user => {
       if (!user) {

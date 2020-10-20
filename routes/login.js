@@ -23,7 +23,6 @@ const login =  function(email, password) {
 exports.login = login;
 
 router.post('/', (req, res) => {
-  console.log(req.body);
   const {email, password} = req.body;
   login(email, password)
     .then(user => {
@@ -37,11 +36,9 @@ router.post('/', (req, res) => {
       }
       currentUser = user;
       req.session.userId = user.id;
-      console.log("yoyoyo");
       return res.redirect("/");
     })
     .catch(e => {
-      console.log("gello")
       res.send(e)
     })
 });

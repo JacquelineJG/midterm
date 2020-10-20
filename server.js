@@ -45,10 +45,14 @@ const widgetsRoutes = require("./routes/widgets");
 const register = require('./routes/register');
 const login = require('./routes/login');
 const profile = require('./routes/profile');
+const index = require('./routes/index');
+const logout = require('./routes/logout');
 const database = require('./database');
 const registerRouter = express.Router();
 const loginRouter = express.Router();
 const profileRouter = express.Router();
+const indexRouter = express.Router();
+const logoutRouter = express.Router();
 //const loginRoutes = require('./routes/login');
 // const registerRoutes = require("./routes/register");
 //const searchRoutes = require('./routes/search');
@@ -63,25 +67,15 @@ login(loginRouter, database);
 app.use('/login', loginRouter);
 profile(profileRouter, database);
 app.use('/profile', profileRouter);
+index(indexRouter, database);
+app.use('/', indexRouter);
+logout(logoutRouter, database);
+app.use('/logout', logoutRouter);
+
 //app.use('/login', loginRoutes(db));
 // app.use('/register', registerRoutes(db));
 //app.use('/search', searchRoutes(db));
 // Note: mount other resources here, using the same pattern above
-
-
-// Home page
-// Warning: avoid creating more routes in this file!
-// Separate them into separate routes files (see above).
-
-app.get("/", (req, res) => {
-  if (!req.session.userId) {
-    return res.redirect("/login");
-  }
-  const templateVars = {
-    user: currentUser
-  };
-  res.render("index", templateVars);
-});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
