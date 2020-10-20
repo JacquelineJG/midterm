@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Profile</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>Profile</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-  <body>
-    <%- include('partials/_header') %>
-    <div class="card text-center">
-        <div class="card-header"></div>
-        <div class="card-body">
-          <p class="card-title">Name: <a><%= users.name %></a></p>
-          <p class="card-text">Email: <a><%= users.email %></a></p>
-          <p class="card-text">Password: <a><%= users.password %></a></p>
-        </div>
-        </div>
-      <div class="card-footer card text-center text-muted">
-        <h3>Edit</h3>
-        <form class=" form-inline text-center align-self-center" method="POST" action="/profile/<%= userID %>">
-          <div class="form-group text-center ">
-            <label for="name">Name:</label>
-            <input class="form-control" type="text" value="<%= user.name %>" style="width: 300px; margin: 1em">
-            <label for="email">Email:</label>
-            <input class="form-control" type="text" value="<%= user.email %>" style="width: 300px; margin: 1em">
-            <label for="password">Password:</label>
-            <input class="form-control" type="text" value="<%= user.password %>" style="width: 300px; margin: 1em">
-            <button type="submit" class="btn btn-primary">Update</button></div>
-          </div>
-      </div>
-  </body>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+  <%- include('partials/_header') %>
+  <div class="card text-center">
+    <div class="card-header"></div>
+    <div class="card-body">
+      <p class="card-title">Name: <a><%= user.name %></a></p>
+      <p class="card-text">Email: <a><%= user.email %></a></p>
+      <p class="card-text">Password: <a><%= user.password %></a></p>
+    </div>
+    <main style="margin: 1em;">
+      <form action="/profile" method="POST">
+        <div class="container">
+          <h1>Create New Account</h1>
+          <p>Please fill in this form to create an account</p>
+          <hr>
+          <label for="id"><b>UserID</b></label>
+          <input type=id placeholder='<%user.id%>' name=id readonly>
+
+          <label for="name"><b>Username</b></label>
+          <input type=name placeholder="Enter Username" name=name required>
+
+          <label for="email"><b>Email</b></label>
+          <input type=email placeholder="Enter Email" name=email required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type=password placeholder="Enter Password" name=password required>
+          <button type="submit" class="btn btn-primary">Update</button>
+    </main>
+
+</body>
+
 </html>

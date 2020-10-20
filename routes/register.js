@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const { addUser } = require('../database');
+const bcrypt = require('bcrypt');
 
 
 module.exports = (router, database) => {
@@ -9,6 +10,7 @@ module.exports = (router, database) => {
   });
   router.post("/", (req, res) => {
     const user = req.body;
+    user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
   .then(user => {
     if (!user) {
@@ -17,6 +19,8 @@ module.exports = (router, database) => {
         error: 'req body cannot be empty',
       });
     }
+    // currentUser = user;
+    // req.session.userId = user.id;
     return res.redirect("/");
   })
   .catch(e => {

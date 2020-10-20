@@ -1,2 +1,2 @@
 INSERT INTO users (name, email, password)
-VALUES ('Chris', 'csjohn1@gmail.com', 'password'),('JJ', 'JJ@gmail.com','hamilton'), ('Skim', 'skim@gmail.com', 'korea');
+VALUES ('Chris', 'csjohn1@gmail.com', '$2b$12$5.OhV/MWqAfSS5O.cJXxMOwo4ix.xpcjRA94Ox3i52JvoR99t.k32'),('JJ', 'JJ@gmail.com', '$2b$12$5.OhV/MWqAfSS5O.cJXxMOwo4ix.xpcjRA94Ox3i52JvoR99t.k32'), ('Skim', 'skim@gmail.com', '$2b$12$5.OhV/MWqAfSS5O.cJXxMOwo4ix.xpcjRA94Ox3i52JvoR99t.k32');
