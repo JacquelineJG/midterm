@@ -13,8 +13,8 @@
   </head>
 
   <body>
-    <%- include('partials/_search') %>
     <tbody>
+      <% tiles %>
       <% for(let tile in tiles) { %>
         <tr>
           <td><%= (tiles[tile].title) %></td>
@@ -27,26 +27,3 @@
     </tbody>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,14 +10,30 @@
           <a class="nav-item nav-link"><%= user.name%></a>
           <% } %>
         <!-- <a class="nav-item nav-link" href="/urls/new">My Tiles</a> -->
-        <a class="nav-item nav-link" href="/urls/new">Create a Pin</a>
+        <a class="nav-item nav-link" href="/create">Create a Pin</a>
       </div>
     </div>
     <div>
-      <form action="/search" method=GET>
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
+      <form action="/results" method=GET>
+
+
+        <div class="new-tile-form__field-wrapper">
+          <label for="new-tile-form__type">Category</label>
+          <select id="new-tile-form__type" name="type">
+            <option value="art">Arts & Humanities</option>
+              <option value="compsci">Computer Science</option>
+              <option value="language">Languages</option>
+              <option value="math">Mathematics</option>
+              <option value="personal">Personal Development</option>
+              <option value="science">Physical Science and Engineering</option>
+              <option value="socsci">Social Science</option>
+              <option value="sean">Sean</option>
+          </select>
+          <button type="submit"><i class="fa fa-search">Search</button>
+        </div>
+
+
       </form>
     </div>
   </nav>
-</header> -->
+</header>

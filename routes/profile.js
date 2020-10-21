@@ -6,14 +6,12 @@ const { getUserWithId } = require('../database');
 module.exports = function(router, database) {
   router.get("/", (req, res) => {
     const getUser =  function(userId) {
-      console.log(`fcuserId: ${userId}`)
     return database.getUserWithId(userId)
     }
 
     const userId = req.session.userId;
     getUser(userId)
       .then(user => {
-        console.log(`lastuserId: ${userId}`)
   const templateVars = {
       user: user
     };
@@ -41,4 +39,4 @@ module.exports = function(router, database) {
   });
 
     return router;
-}
+};
