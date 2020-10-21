@@ -1,15 +1,23 @@
 const express = require('express');
 const router  = express.Router();
 const { createTile } = require('../database');
+const { getUserWithId } = require('../database');
 const cookieSession = require('cookie-session');
 
 module.exports = function(router, database) {
   router.get("/", (req, res) => {
-    return res.render("create");
+
+      const userId = req.session.userId;
+      getUserWithId(userId)
+        .then(user => {
+    const templateVars = {
+        user: user
+      };
+    return res.render("create", templateVars);
+    });
 });
   router.post("/", (req, res) => {
     const tiles = req.body;
-    console.log(`reqbod:${JSON.stringify(req.body)}`);
     tiles.user_id = req.session.userId;
     database.createTile(tiles)
   .then(tiles => {

@@ -19,8 +19,8 @@ module.exports = (router, database) => {
         error: 'req body cannot be empty',
       });
     }
-    // currentUser = user;
-    // req.session.userId = user.id;
+    currentUser = user;
+    req.session.userId = user.id;
     return res.redirect("/");
   })
   .catch(e => {

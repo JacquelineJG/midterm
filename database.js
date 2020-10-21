@@ -67,11 +67,7 @@ const getUserWithId = function(userId) {
   SELECT * FROM users
   WHERE id = $1;
   `;
-
-  console.log(`dbuserId: ${userId}`)
-
   const values = [`${userId}`];
-  console.log(`values: ${values}`)
   return pool.query(queryString, values)
   .then(res => res.rows[0]);
 
@@ -82,11 +78,11 @@ exports.getUserWithId = getUserWithId;
 const populateTiles = function() {
   const queryString = `
   SELECT * FROM tiles
+  ORDER BY id DESC;
   `;
   return pool.query(queryString)
   .then(res => {
     if (res.rows.length){
-      console.log(`res.rows: ${JSON.stringify(res.rows)}`);
       return res.rows;
     } else {
       console.log(`null`)
@@ -115,8 +111,6 @@ const createTile = function(tiles) {
 exports.createTile = createTile;
 
 const searchCategory = function(category) {
-    const queryParams = [];
-console.log(`category: ${category}`);
     let queryString = `
     SELECT *
     FROM tiles
@@ -127,9 +121,9 @@ console.log(`category: ${category}`);
      } else if (category == 'compsci') {
        queryString += `WHERE category='compsci'`;
      } else if (category == 'language') {
-      queryString += `WHERE category='language';`;
+      queryString += `WHERE category='language'`;
      } else if (category == 'math') {
-     queryString += `WHERE category='math';`;
+     queryString += `WHERE category='math'`;
      } else if (category == 'personal') {
       queryString += `WHERE category='personal'`;
      } else if (category == 'science') {
@@ -137,15 +131,12 @@ console.log(`category: ${category}`);
      } else if (category == 'sosci') {
       queryString += `WHERE category='sosci'`;
      } else if (category == 'sean') {
-      queryString += `WHERE category='sean';`;
+      queryString += `WHERE category='sean'`;
      }
-
-     console.log(`QS: ${queryString}`);
+    queryString += `ORDER BY id DESC;`
 
      return pool.query(queryString)
      .then(res => {
-
-       console.log(`resrowssearch: ${JSON.stringify(res.rows)}`);
        return res.rows;
      });
 
@@ -161,13 +152,13 @@ console.log(`category: ${my}`);
   SELECT *
   FROM tiles
   WHERE user_id = $1
+  ORDER BY id DESC;
   `;
 
   const values = [`${my}`];
 
   return pool.query(queryString, values)
   .then(res => {
-    console.log(`tilesresrow: ${res.rows}`)
     return res.rows
   });
 
@@ -175,3 +166,23 @@ console.log(`category: ${my}`);
 }
 
   exports.myTiles = myTiles;
+
+  const getTile = function(tileId) {
+
+      let queryString = `
+      SELECT *
+      FROM tiles
+      WHERE id = $1
+      `;
+
+      const values = [`${tileId}`];
+
+      return pool.query(queryString, values)
+      .then(res => {
+        return res.rows[0]
+      });
+
+
+    }
+
+      exports.getTile = getTile;

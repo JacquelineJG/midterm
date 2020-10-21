@@ -9,10 +9,10 @@
         <% if (user) { %>
           <form method="POST" action="/logout">
           <a class=“nav-item nav-link”><%= user.name%></a>
-          <button type="submit" class="btn btn-outline-secondary">Logout</button>
+          <button type="submit" class="btn btn-outline-secondary">Logout</button></form>
           <% } %>
-        <a class="nav-item nav-link" href="/urls/new">My Tiles</a>
-        <a class="nav-item nav-link" href="/urls/new">Create a Pin</a>
+        <a class="nav-item nav-link" href="/tiles">My Tiles</a>
+        <a class="nav-item nav-link" href="/create">Create a Pin</a>
       </div>
     </div>
   </nav>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+    <title>Midterm</title>
+  </head>
+
+  <body>
+    <%- include('partials/_search') %>
+    <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+      <img class="card-img-top" src="<%= tile.thumbnail_photo_url %>" width="150" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= tile.title %></h5>
+        <p class="card-text"><%= tile.description %></p>
+      </div>
+      <ul class="list-group list-group-flush text-dark">
+        <li class="list-group-item"><%= tile.url %></li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+      </ul>
+      <div class="card-body">
+        <a href="/tile" class="card-link">View Tile</a>
+        <a href="https://<%= tile.url %>/" class="card-link">Link to Site</a>
+      </div>
+    </div>
+  </body>
+</html>

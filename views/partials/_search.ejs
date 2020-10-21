@@ -7,16 +7,19 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <% if (user) { %>
-          <a class="nav-item nav-link"><%= user.name%></a>
+          <form method="POST" action="/logout">
+          <a class=“nav-item nav-link”><%= user.name%></a>
+          <button type="submit" class="btn btn-outline-secondary">Logout</button></form>
           <% } %>
-        <!-- <a class="nav-item nav-link" href="/urls/new">My Tiles</a> -->
+        <a class="nav-item nav-link" href="/tiles">My Tiles</a>
         <a class="nav-item nav-link" href="/create">Create a Pin</a>
       </div>
     </div>
     <div>
+
+
+
       <form action="/results" method=GET>
-
-
         <div class="new-tile-form__field-wrapper">
           <label for="new-tile-form__type">Category</label>
           <select id="new-tile-form__type" name="type">
@@ -31,8 +34,6 @@
           </select>
           <button type="submit"><i class="fa fa-search">Search</button>
         </div>
-
-
       </form>
     </div>
   </nav>

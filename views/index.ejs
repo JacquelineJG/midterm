@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -16,13 +17,22 @@
     <%- include('partials/_search') %>
     <tbody>
       <% for(let tile in tiles) { %>
-        <tr>
-          <td><%= (tiles[tile].title) %></td>
-          <td><%= (tiles[tile].description) %></td>
-          <td><%= (tiles[tile].url) %></td>
-          <td><img src="<%= (tiles[tile].thumbnail_photo_url) %>"width="200"></td>
-
-        </tr>
+        <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+          <img class="card-img-top" src="<%= (tiles[tile].thumbnail_photo_url) %>" width="150" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= (tiles[tile].title) %></h5>
+            <p class="card-text"><%= (tiles[tile].description) %></p>
+          </div>
+          <ul class="list-group list-group-flush text-dark">
+            <li class="list-group-item"><%= (tiles[tile].url) %></li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="/tile/<%= (tiles[tile].id) %>" class="card-link">View Tile</a>
+            <a href="https://<%= (tiles[tile].url) %>/" class="card-link">Link to Site</a>
+          </div>
+        </div>
       <% } %>
     </tbody>
   </body>
