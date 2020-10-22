@@ -1,4 +1,18 @@
 INSERT INTO comments (comment, user_id, tile_id)
-VALUES ('OMG this picture is so inspiring', 42, 24),
-('YAAAAAAAAASSSS QUEEEENN', 42, 24),
-('I wish Chris were here to see this', 45, 24);
+VALUES ('Very informative!', 46, 114),
+('I disagree', 47, 124),
+('Very cool', 50, 125),
+('Wow!', 50, 107),
+('Interesting', 50, 110),
+('Will have to follow up on this', 48, 129),
+('Neat!', 48, 128),
+('Hello', 48, 111),
+('My granddaughter would love this', 49, 135),
+('Neat', 49, 118),
+('So cool', 49, 119),
+('Wowie!', 46, 119),
+('Very nice', 46, 126),
+('Hmmm, interesting', 46, 113),
+('Very neat', 47, 130),
+('Great', 47, 129),
+('Oh, this is new!', 50, 124);

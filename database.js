@@ -158,17 +158,13 @@ let queryString = `
   exports.myTiles = myTiles;
 
   const myLikes = function(my) {
-
     let queryString = `
       SELECT tiles.*
       FROM tiles
-      JOIN users ON users.id = tiles.user_id
-      JOIN likes ON users.id = likes.user_id
-      WHERE users.id = $1
+      JOIN likes ON tiles.id = likes.tile_id
+      WHERE likes.user_id = $1
       `;
-
       const values = [`${my}`];
-
       return pool.query(queryString, values)
       .then(res => {
         return res.rows
