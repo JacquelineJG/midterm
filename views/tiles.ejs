@@ -16,21 +16,41 @@
   <body>
     <%- include('partials/_search') %>
     <tbody>
-      <% for(let tile in tiles) { %>
+      <h3>My created tiles</h3>
+      <% for(let tile in myTiles) { %>
         <div class="card text-white bg-dark mb-3" style="width: 18rem;">
-          <img class="card-img-top" src="<%= (tiles[tile].thumbnail_photo_url) %>" width="150" alt="Card image cap">
+          <img class="card-img-top" src="<%= (myTiles[tile].thumbnail_photo_url) %>" width="150" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title"><%= (tiles[tile].title) %></h5>
-            <p class="card-text"><%= (tiles[tile].description) %></p>
+            <h5 class="card-title"><%= (myTiles[tile].title) %></h5>
+            <p class="card-text"><%= (myTiles[tile].description) %></p>
           </div>
           <ul class="list-group list-group-flush text-dark">
-            <li class="list-group-item"><%= (tiles[tile].url) %></li>
+            <li class="list-group-item"><%= (myTiles[tile].url) %></li>
             <li class="list-group-item">Dapibus ac facilisis in</li>
             <li class="list-group-item">Vestibulum at eros</li>
           </ul>
           <div class="card-body">
-            <a href="/tile" class="card-link">View Tile</a>
-            <a href="https://<%= (tiles[tile].url) %>/" class="card-link">Link to Site</a>
+            <a href="/tile/<%= (myTiles[tile].id) %>" class="card-link">View Tile</a>
+            <a href="https://<%= (myTiles[tile].url) %>/" class="card-link">Link to Site</a>
+          </div>
+        </div>
+      <% } %>
+      <h3>My liked tiles</h3>
+      <% for(let tile in myLikes) { %>
+        <div class="card text-white bg-dark mb-3" style="width: 18rem;">
+          <img class="card-img-top" src="<%= (myLikes[tile].thumbnail_photo_url) %>" width="150" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= (myLikes[tile].title) %></h5>
+            <p class="card-text"><%= (myLikes[tile].description) %></p>
+          </div>
+          <ul class="list-group list-group-flush text-dark">
+            <li class="list-group-item"><%= (myLikes[tile].url) %></li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="/tile/<%= (myLikes[tile].id) %>" class="card-link">View Tile</a>
+            <a href="https://<%= (myLikes[tile].url) %>/" class="card-link">Link to Site</a>
           </div>
         </div>
       <% } %>

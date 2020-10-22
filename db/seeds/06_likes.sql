@@ -1,6 +1,10 @@
-INSERT INTO likes (tile_id, likes, user_id)
-VALUES (1, 4, 2);
-INSERT INTO likes (tile_id, likes, user_id)
-VALUES (1, 1, 1);
-INSERT INTO likes (tile_id, likes, user_id)
-VALUES (2, 3, 2);
+INSERT INTO likes (tile_id, is_like, user_id)
+VALUES (38, 1, 45);
+INSERT INTO likes (tile_id, is_like, user_id)
+VALUES (38, 1, 45);
+INSERT INTO likes (tile_id, is_like, user_id)
+VALUES (38, 1, 45);
+INSERT INTO likes (tile_id, is_like, user_id)
+VALUES (39, 1, 45);
+INSERT INTO likes (tile_id, is_like, user_id)
+VALUES (40, 1, 45);

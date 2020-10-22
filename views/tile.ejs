@@ -23,13 +23,64 @@
       </div>
       <ul class="list-group list-group-flush text-dark">
         <li class="list-group-item"><%= tile.url %></li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Rating: <%= ratings[0].round %> / 5</li>
         <li class="list-group-item">Vestibulum at eros</li>
       </ul>
+      <div>
+        <form action="/likes" method="POST">
+          <input type=id value=1 name=tile_id hidden>
+          <input type=id value="<%= tile.id %>" name=tile_id hidden>
+         <button type='submit' id='likes' class='button'>LIKE!</button>
+      </div>
+          </div>
+        </form>
+      </div>
       <div class="card-body">
         <a href="/tile" class="card-link">View Tile</a>
         <a href="https://<%= tile.url %>/" class="card-link">Link to Site</a>
       </div>
+      <div>
+        <form action="/ratings" method="POST">
+        <div class="rate">
+          <input type="radio" id="star5" name="rate" value="5" />
+          <label for="star5" title="text">5 stars</label>
+          <input type="radio" id="star4" name="rate" value="4" />
+          <label for="star4" title="text">4 stars</label>
+          <input type="radio" id="star3" name="rate" value="3" />
+          <label for="star3" title="text">3 stars</label>
+          <input type="radio" id="star2" name="rate" value="2" />
+          <label for="star2" title="text">2 stars</label>
+          <input type="radio" id="star1" name="rate" value="1" />
+          <label for="star1" title="text">1 star</label>
+          <input type=id value="<%= tile.id %>" name=tile_id hidden>
+          <button type="submit" id="submit">Rate Me!</button>
+        </form>
+        </div>
+        <section class="container">
+        <div class="error">
+          <p class="error1"></p>
+          <p class="error2"></p>
+        </div>
+        <form action="/comment" method="POST">
+          <div class="comment">
+            <textarea name="text" id="comment-text" placeholder='Go Ahead, Comment Here!'></textarea>
+            <input type=id value="<%= tile.id %>" name=tile_id hidden>
+          </div>
+          <div class="footer">
+            <button id="submit" type="submit">Comment</button>
+          </div>
+        </form>
+      </section>
+
+        <section id="comments-container" class="commentsection">
+        </section></div>
+      <% for(let comment in comments) { %>
+      <div class="card-body">
+        <h5 class="card-text"><%= (comments[comment].name) %></h5>
+        <p class="card-text"><%= (comments[comment].comment) %></p>
+      </div>
+      <% } %>
     </div>
+
   </body>
 </html>

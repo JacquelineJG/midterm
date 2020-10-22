@@ -35,8 +35,6 @@ const getUserWithEmail = function(email) {
 
   return pool.query(queryString, values)
   .then(res => res.rows[0]);
-
-
 }
 exports.getUserWithEmail = getUserWithEmail;
 
@@ -48,7 +46,6 @@ const updateProfile = function(user) {
   WHERE id = $4
   RETURNING *
   `;
-
 
   return pool.query(queryString, [user.name, user.email, user.password, user.id])
   .then(res => {
@@ -70,8 +67,6 @@ const getUserWithId = function(userId) {
   const values = [`${userId}`];
   return pool.query(queryString, values)
   .then(res => res.rows[0]);
-
-
 }
 exports.getUserWithId = getUserWithId;
 
@@ -139,20 +134,18 @@ const searchCategory = function(category) {
      .then(res => {
        return res.rows;
      });
-
    }
-
 exports.searchCategory = searchCategory;
 
 
 const myTiles = function(my) {
 
 console.log(`category: ${my}`);
-  let queryString = `
+
+let queryString = `
   SELECT *
   FROM tiles
-  WHERE user_id = $1
-  ORDER BY id DESC;
+  WHERE user_id = $1;
   `;
 
   const values = [`${my}`];
@@ -161,11 +154,28 @@ console.log(`category: ${my}`);
   .then(res => {
     return res.rows
   });
-
-
 }
-
   exports.myTiles = myTiles;
+
+  const myLikes = function(my) {
+
+    let queryString = `
+      SELECT tiles.*
+      FROM tiles
+      JOIN users ON users.id = tiles.user_id
+      JOIN likes ON users.id = likes.user_id
+      WHERE users.id = $1
+      `;
+
+      const values = [`${my}`];
+
+      return pool.query(queryString, values)
+      .then(res => {
+        return res.rows
+      });
+    }
+      exports.myLikes = myLikes;
+
 
   const getTile = function(tileId) {
 
@@ -181,8 +191,102 @@ console.log(`category: ${my}`);
       .then(res => {
         return res.rows[0]
       });
-
-
     }
-
       exports.getTile = getTile;
+
+const createComment = function(comments, user_id) {
+  const queryString = `
+  INSERT INTO comments (comment, user_id, tile_id)
+  VALUES ($1, $2, $3)
+  RETURNING *
+  `;
+  return pool.query(queryString, [`${comments.text}`, user_id, comments.tile_id])
+  .then(res => {
+    if (res.rows.length){
+      return res.rows[0];
+    } else {
+      return null;
+    }
+  });
+}
+exports.createComment = createComment;
+
+const getComments = function(tileId) {
+  const queryString = `
+  SELECT comments.comment, users.name
+  FROM comments
+  JOIN users ON user_id=users.id
+  WHERE comments.tile_id=$1;
+  `;
+
+  const values = [`${tileId}`];
+  return pool.query(queryString, values)
+  .then(res => {
+    if (res.rows.length){
+      return res.rows;
+    } else {
+      console.log(`null`)
+      return null;
+    }
+  });
+}
+exports.getComments = getComments;
+
+const createRating = function(rating, user_id) {
+  const queryString = `
+  INSERT INTO ratings (rating, user_id, tile_id)
+  VALUES ($1, $2, $3)
+  RETURNING *
+  `;
+  return pool.query(queryString, [rating.rate, user_id, rating.tile_id])
+  .then(res => {
+    if (res.rows.length){
+      console.log(`resrowscreaterating ${JSON.stringify(res.rows)}`);
+      return res.rows[0];
+    } else {
+      return null;
+    }
+  });
+}
+exports.createRating = createRating;
+
+const getRating = function(tileId) {
+  const queryString = `
+  SELECT round(avg(rating), 1)
+  FROM ratings
+  WHERE tile_id=$1;
+  `;
+
+  const values = [`${tileId}`];
+  return pool.query(queryString, values)
+  .then(res => {
+    if (res.rows.length){
+      console.log(`resrowsgetrating ${JSON.stringify(res.rows)}`);
+      return res.rows;
+    } else {
+      console.log(`null`)
+      return null;
+    }
+  });
+}
+exports.getRating = getRating;
+
+
+const createLikes = function(likes, user_id, tile_id) {
+  const queryString = `
+  INSERT INTO likes (is_like, user_id, tile_id)
+  VALUES ($1, $2, $3)
+  RETURNING *
+  `;
+
+  return pool.query(queryString, [likes, user_id, tile_id])
+  .then(res => {
+    if (res.rows.length){
+      return res.rows;
+    } else {
+      console.log(`null`)
+      return null;
+    }
+  });
+}
+exports.createLikes = createLikes;

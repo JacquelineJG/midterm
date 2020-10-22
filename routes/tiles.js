@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const { myTiles } = require('../database');
+const { myLikes } = require('../database');
 const { getUserWithId } = require('../database');
 
 module.exports = function(router, database) {
@@ -11,17 +12,18 @@ module.exports = function(router, database) {
       const my = req.session.userId;
       const userId = req.session.userId;
 
-      Promise.all([database.myTiles(my), database.getUserWithId(userId)])
+      Promise.all([database.myTiles(my), database.getUserWithId(userId), database.myLikes(my)])
         .then(all => {
-          console.log(`0 ${JSON.stringify(all[0])}`);
-          console.log(`1: ${JSON.stringify(all[1])}`);
+
           const my = all[0];
           const user = all[1];
+          const likes = all[2];
           const templateVars = {
-            tiles: my,
-            user: user
+            myTiles: my,
+            user: user,
+            myLikes: likes
           };
-          console.log(`tv: ${JSON.stringify(templateVars)}`);
+          console.log(`******T V: ${JSON.stringify(templateVars)}`);
           res.render("tiles", templateVars);
         })
     });
