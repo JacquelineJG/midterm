@@ -4,6 +4,8 @@ const { createLikes } = require('../database');
 const { getUserWithId } = require('../database');
 const cookieSession = require('cookie-session');
 
+// Receives a user's like on a tile, adds it to the database, and returns the tile info
+
 module.exports = function(router, database) {
 
   router.post("/", (req, res) => {
