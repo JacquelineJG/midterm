@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Kermit - Home</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' type='text/css' href='/styles/layout.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <title>Midterm</title>
     <%- include('partials/_search') %>
@@ -16,8 +19,10 @@
           <h2><%= (tiles[tile].title) %></h2>
           <p><%= (tiles[tile].description) %></p>
           <li><%= (tiles[tile].url) %></li>
+          <div class='a'>
           <a href="/tile/<%= (tiles[tile].id) %>" class="card-link">View Tile</a>
-          <a href="https://<%= (tiles[tile].url) %>/" class="card-link">Link to Site</a>
+          <a href="https://<%= (tiles[tile].url) %>" class="card-link">Link to Site</a>
+          </div>
       </div>
       </div>
       <% } %>

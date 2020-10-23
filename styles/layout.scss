@@ -1,54 +1,286 @@
-body {
+nav {
   margin: 0;
   padding: 0;
-  background: #333;
+  display: flex;
+  align-items: center;
+  height: 105px;
+  width: 100%;
+  top: 0;
+  margin-left: 0;
+  position: fixed;
+  justify-content: space-between;
+  background: #7f7f87;
+  font-family: 'Quicksand', sans-serif;
+  font-style: normal;
+  color:#F8F8FF;
 }
+#logo {
+  display: flex;
+  align-items: center;
+  background: #7f7f87;
+}
+
+#logo-div {
+  background: #7f7f87;
+}
+
+.logo img {
+  float: left;
+  width: 70px;
+  height: 70px;
+  padding: 0 1em;
+  border-radius: 50%;
+  color: white;
+  background-color: none;
+}
+
+.navbar-nav{
+  display: flex;
+  flex-direction: row;
+}
+.name-show {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1em;
+}
+#logout {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(87, 163, 180);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  align-items: center;
+  border-radius: 50px;
+}
+#name {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+#my-tiles{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(122, 167, 177);
+  color: white;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+}
+#create-tile {
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgb(122, 167, 177);
+  color: white;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+}
+.search{
+  display: flex;
+  flex-direction: row;
+  padding: 0 3em;
+  align-items: center;
+}
+
+
+body {
+  padding-top: 100px;
+  background: #F8F8FF;
+  font-family: 'Quicksand', sans-serif;
+  font-style: normal;
+  background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+}
+
 .container {
-  width: 1200px;
-  margin: 20px auto;
-  columns: 4;
-  column-gap: 40px;
+  width: 100%;
+  column-gap: 15px;
+  font-style: normal;
+  columns: 1;
 }
 .container .box {
-  width: 100%;
+  width: 90%;
   margin: 0 0 20px;
-  background: #fff;
   overflow: hidden;
   break-inside: avoid;
+  border-radius: 20px;
+  padding-bottom: 10px;
+  background: white;
+  font-style: normal;
+  border: 1px solid #DCDCDC;
 }
+.container .box:hover {
+  width: 90%;
+  margin: 0 0 20px;
+  overflow: hidden;
+  break-inside: avoid;
+  border-radius: 20px;
+  padding-bottom: 10px;
+  background: white;
+  font-style: normal;
+  border: 1px solid gray;
+}
+
 .container .box img {
-  max-width: 100%;
+  width: 100%;
 }
 .container .box h2 {
-  margin: 10px 0 0;
-  padding: 0;
+  margin: 10px;
   font-size: 20px;
+  text-align: center;
 }
 .container .box p {
-  margin: 0;
-  padding:  0 0 10px;
+  margin: 10px;
   font-size: 16px;
 }
+.a {
+  display: flex;
+  justify-content: space-around;
+}
+.a a {
+  display: block;
+  width: 115px;
+  height: 25px;
+  background: rgb(122, 167, 177);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  line-height: 25px;
+}
+
 .container .box li {
-  margin: 0;
-  padding:  0 0 10px;
+  margin: 10px;
   font-size: 16px;
+  word-break: break-all;
 }
-@media (width-max: 1200px) {
-  .container {
-    columns: 3;
-    width: calc(100% - 40px);
-    box-sizing: border-box;
-    padding: 20px 20px 20px 0;
-  }
+
+button #categorybutton {
+  padding: 0;
+  margin: 0 0 5px 0;
 }
-@media (width-max: 786px) {
+.categorybutton {
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+
+//--------- LOGIN FORM----------
+
+input[type=email],
+input[type=password],
+input[type=name] {
+  width: 100%;
+  padding: 12px, 20px;
+  margin: 8px, 8px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+button {
+  background-color: #7f7f87;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius:25px;
+}
+
+.login-logo {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.login-container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  border: 1px solid lightgray;
+  padding-bottom: 5em;
+}
+
+#register-login {
+  margin-top: 1em;
+}
+
+//-------------------CREATE TILE-------------------------------------
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical
+}
+
+
+input[type=submit] {
+  background-color: #7f7f87;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+.create-container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+//------------------------------------------------------------------
+#comment-text {
+width: 96%;
+height: 40px;
+border: none; background: whitesmoke; padding: 5px 10px; border-radius: 5px 5px 0px 0px; border-bottom: 2px solid #016BA8; transition: all 0.5s;margin-top: 15px;
+}
+
+@media only screen and (min-width: 767px) {
   .container {
+    width: 100%;
     columns: 2;
+    column-gap: 40px;
+    font-style: normal;
   }
 }
-@media (width-max: 480px) {
+@media only screen and (min-width: 1023px) {
   .container {
-    columns: 1;
+    width: 100%;
+    columns: 4;
+    column-gap: 40px;
+    font-style: normal;
   }
 }

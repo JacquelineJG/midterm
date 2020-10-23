@@ -1,40 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Kermit - Search Results</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='/styles/layout.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <title>Midterm</title>
-  </head>
-
-  <body>
     <%- include('partials/_search') %>
-    <tbody>
-      <% tiles %>
-      <% for(let tile in tiles) { %>
-        <div class="card text-white bg-dark mb-3" style="width: 18rem;">
-          <img class="card-img-top" src="<%= (tiles[tile].thumbnail_photo_url) %>" width="150" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"><%= (tiles[tile].title) %></h5>
-            <p class="card-text"><%= (tiles[tile].description) %></p>
-          </div>
-          <ul class="list-group list-group-flush text-dark">
-            <li class="list-group-item"><%= (tiles[tile].url) %></li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-          </ul>
-          <div class="card-body">
-            <a href="/tile/<%= (tiles[tile].id) %>" class="card-link">View Tile</a>
-            <a href="https://<%= (tiles[tile].url) %>/" class="card-link">Link to Site</a>
-          </div>
+  </head>
+  <body class='container'>
+    <% for(let tile in tiles) { %>
+      <div class='col-xs-2 col-md-4 col-lg-6'>
+      <div class='box'>
+        <img src='<%= (tiles[tile].thumbnail_photo_url) %>'>
+        <h2><%= (tiles[tile].title) %></h2>
+        <p><%= (tiles[tile].description) %></p>
+        <li><%= (tiles[tile].url) %></li>
+        <div class='a'>
+        <a href="/tile/<%= (tiles[tile].id) %>" class="card-link">View Tile</a>
+        <a href="https://<%= (tiles[tile].url) %>" class="card-link">Link to Site</a>
         </div>
-      <% } %>
-    </tbody>
+    </div>
+    </div>
+    <% } %>
   </body>
 </html>

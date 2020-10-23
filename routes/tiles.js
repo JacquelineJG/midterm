@@ -23,7 +23,7 @@ module.exports = function(router, database) {
             user: user,
             myLikes: likes
           };
-          console.log(`******T V: ${JSON.stringify(templateVars)}`);
+
           res.render("tiles", templateVars);
         })
     });

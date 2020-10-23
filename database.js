@@ -110,11 +110,10 @@ const searchCategory = function(category) {
     SELECT *
     FROM tiles
     `;
-
-     if (category == 'art') {
-       queryString += `WHERE category='art' `;
-     } else if (category == 'compsci') {
-       queryString += `WHERE category='compsci'`;
+    if (category == 'compsci') {
+      queryString += `WHERE category='compsci'`;
+    } else if (category == 'arts') {
+      queryString += `WHERE category='arts'`;
      } else if (category == 'language') {
       queryString += `WHERE category='language'`;
      } else if (category == 'math') {
@@ -123,8 +122,8 @@ const searchCategory = function(category) {
       queryString += `WHERE category='personal'`;
      } else if (category == 'science') {
       queryString += `WHERE category='science'`;
-     } else if (category == 'sosci') {
-      queryString += `WHERE category='sosci'`;
+     } else if (category == 'socsci') {
+      queryString += `WHERE category='socsci'`;
      } else if (category == 'sean') {
       queryString += `WHERE category='sean'`;
      }

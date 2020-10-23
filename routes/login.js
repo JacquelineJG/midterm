@@ -26,8 +26,6 @@ router.post('/', (req, res) => {
   const {email, password} = req.body;
   login(email, password)
     .then(user => {
-      console.log(email);
-      console.log(password);
       if (!user) {
         return res.status(400).json({
           status: 'error',

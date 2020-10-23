@@ -14,15 +14,14 @@ module.exports = function(router, database) {
 
       Promise.all([database.searchCategory(category), database.getUserWithId(userId)])
         .then(all => {
-          console.log(`0 ${JSON.stringify(all[0])}`);
-          console.log(`1: ${JSON.stringify(all[1])}`);
+
           const category = all[0];
           const user = all[1];
           const templateVars = {
             tiles: category,
             user: user
           };
-          console.log(`tv: ${JSON.stringify(templateVars)}`);
+
           res.render("results", templateVars);
         })
     });

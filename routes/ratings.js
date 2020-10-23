@@ -8,8 +8,7 @@ module.exports = function(router, database) {
   router.post("/", (req, res) => {
     const rating = req.body;
     const user_id = req.session.userId;
-    console.log(`rb: ${JSON.stringify(req.body)}`);
-    console.log(`comment.js: ${req.body.id} `)
+
 
 
     database.createRating(rating, user_id)

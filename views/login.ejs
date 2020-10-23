@@ -4,27 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>MIDTERM</title>
+    <title>Kermit - Login</title>
+
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
-  <body>
 
+
+  <body class='login-container'>
+    <h1>Kermit</h1>
+    <div class="login-logo" id="login-logo">
+      <img src="/images/logo.png" alt="avatar" class='avatar'>
+    </div>
     <main style="margin: 1em;">
-      <h1>**MIDTERM** Login</h1>
         <div class="form-group mb-2">
           <form action="/login" method="POST">
-            <a>Enter Email</a>
-            <input type="email" name="email" placeholder="Enter Email Here">
-            <a>Enter Password</a>
-            <input type="password" name="password" placeholder="Enter Password Here">
+            <input type="email" name="email" placeholder="Enter Email">
+            <input type="password" name="password" placeholder="Enter Password">
             <button type="submit" class="submit-btn"> Login </button>
           </form>
         </div>
