@@ -3,6 +3,8 @@ const router  = express.Router();
 const { searchCategory } = require('../database');
 const { getUserWithId } = require('../database');
 
+//Puts a tiles of a specified category and user info into a templateVars and renders
+
 module.exports = function(router, database) {
 
     router.get("/", (req, res) => {

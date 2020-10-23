@@ -3,19 +3,24 @@
     <div class="logo" id="logo-div">
       <a href="/" id="logo"><img src="/images/logo.png" alt="logo"></a>
     </div>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
 
-    <section class='right-nav'>
-        <a class="btn" id="my-tiles" href="/tiles">My Tiles</a>
-        <a class="btn" id="create-tile" href="/create">Create a Tile</a>
-      </div>
-    </div>
+
+
     <div class="search">
+      <div class='parent-tile'>
+        <div class="navbar-nav">
+          <section class='right-nav'>
+            <a class="btn" id="my-tiles" href="/tiles">My Tiles</a>
+              </div>
+              <div class='nav-tiles'>
+          <a class="btn" id="create-tile" href="/create">Create a Tile</a>
+        </div>
+
+      </div>
+
+      <div class='search-content'>
 
       <form action="/results" method=GET>
-
-          <label for="new-tile-form__type">Category</label>
           <select id="new-tile-form__type" name="type">
             <option value="arts">Arts & Humanities</option>
               <option value="compsci">Computer Science</option>
@@ -28,16 +33,19 @@
           </select>
           <button class="categorybutton" id="categorybutton" type="submit"><i id="categorybutton" class="fa fa-search"></i></button>
 
+        </form>
+        </div>
 
           <% if (user) { %>
             <div class="name-show">
               <form method="POST" action="/logout" class="name-show">
-              <a id="name" class=“nav-item nav-link”>Hey, <%= user.name%>!</a>
+              <a id="name" class=“nav-item nav-link” href="/profile">Hey, <%= user.name%>!</a>
               <button type="submit" id="logout" class="btn">Logout</button></form>
             </div>
             <% } %>
+
         </div>
-      </form>
+
     </section>
     </div>
   </nav>

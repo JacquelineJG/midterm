@@ -3,6 +3,8 @@ const router  = express.Router();
 const { updateProfile } = require('../database');
 const { getUserWithId } = require('../database');
 
+//This function displays the users name and email, and gives them the option to change their name and email if need be
+
 module.exports = function(router, database) {
   router.get("/", (req, res) => {
     const getUser =  function(userId) {

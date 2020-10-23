@@ -4,6 +4,8 @@ const { myTiles } = require('../database');
 const { myLikes } = require('../database');
 const { getUserWithId } = require('../database');
 
+//Puts a user's tiles, info, and likes into a templateVars and renders
+
 module.exports = function(router, database) {
     router.get("/", (req, res) => {
       if (!req.session.userId) {

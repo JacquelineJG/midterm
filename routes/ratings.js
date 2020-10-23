@@ -3,13 +3,12 @@ const router  = express.Router();
 const { createRating } = require('../database');
 const cookieSession = require('cookie-session');
 
-module.exports = function(router, database) {
+// Receives a user's rating on a tile, adds it to the database, and returns the tile info with the updated rating
 
+module.exports = function(router, database) {
   router.post("/", (req, res) => {
     const rating = req.body;
     const user_id = req.session.userId;
-
-
 
     database.createRating(rating, user_id)
   .then(rating => {

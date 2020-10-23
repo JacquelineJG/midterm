@@ -7,6 +7,7 @@ const pool = new Pool({
   database: 'midterm'
 });
 
+//adds user to the database with username, user email, password as variables
 const addUser = function(user) {
   const queryString = `
   INSERT INTO users (name, email, password)
@@ -24,6 +25,7 @@ const addUser = function(user) {
 }
 exports.addUser = addUser;
 
+//grab user where the email is like variable
 const getUserWithEmail = function(email) {
 
   const queryString = `
@@ -38,6 +40,7 @@ const getUserWithEmail = function(email) {
 }
 exports.getUserWithEmail = getUserWithEmail;
 
+//update profile where user id matches req session
 const updateProfile = function(user) {
 
   const queryString = `
@@ -58,6 +61,7 @@ const updateProfile = function(user) {
 }
 exports.updateProfile = updateProfile;
 
+//get user by id query
 const getUserWithId = function(userId) {
 
   const queryString = `
@@ -70,6 +74,7 @@ const getUserWithId = function(userId) {
 }
 exports.getUserWithId = getUserWithId;
 
+//populate tiles and order by id desc
 const populateTiles = function() {
   const queryString = `
   SELECT * FROM tiles
@@ -87,6 +92,7 @@ const populateTiles = function() {
 }
 exports.populateTiles = populateTiles;
 
+//creates tile and inserts into db
 const createTile = function(tiles) {
   const queryString = `
   INSERT INTO tiles (title, description, thumbnail_photo_url, url, category, user_id)
@@ -105,6 +111,7 @@ const createTile = function(tiles) {
 }
 exports.createTile = createTile;
 
+//search category functionality, creates db query based on search category
 const searchCategory = function(category) {
     let queryString = `
     SELECT *
@@ -136,11 +143,8 @@ const searchCategory = function(category) {
    }
 exports.searchCategory = searchCategory;
 
-
+//selects tiles where the user id associated with the tile table is equal to the current user req sess
 const myTiles = function(my) {
-
-console.log(`category: ${my}`);
-
 let queryString = `
   SELECT *
   FROM tiles
@@ -156,39 +160,39 @@ let queryString = `
 }
   exports.myTiles = myTiles;
 
-  const myLikes = function(my) {
-    let queryString = `
-      SELECT tiles.*
-      FROM tiles
-      JOIN likes ON tiles.id = likes.tile_id
-      WHERE likes.user_id = $1
-      `;
-      const values = [`${my}`];
-      return pool.query(queryString, values)
-      .then(res => {
-        return res.rows
-      });
-    }
-      exports.myLikes = myLikes;
+// selects tiles by the id of the user id matching likes and tiles
+const myLikes = function(my) {
+  let queryString = `
+    SELECT tiles.*
+    FROM tiles
+    JOIN likes ON tiles.id = likes.tile_id
+    WHERE likes.user_id = $1
+    `;
+  const values = [`${my}`];
+  return pool.query(queryString, values)
+  .then(res => {
+    return res.rows
+  });
+}
+exports.myLikes = myLikes;
 
+//get tile by id
+const getTile = function(tileId) {
+  let queryString = `
+    SELECT *
+    FROM tiles
+    WHERE id = $1
+    `;
 
-  const getTile = function(tileId) {
+  const values = [`${tileId}`];
+  return pool.query(queryString, values)
+  .then(res => {
+    return res.rows[0]
+  });
+}
+exports.getTile = getTile;
 
-      let queryString = `
-      SELECT *
-      FROM tiles
-      WHERE id = $1
-      `;
-
-      const values = [`${tileId}`];
-
-      return pool.query(queryString, values)
-      .then(res => {
-        return res.rows[0]
-      });
-    }
-      exports.getTile = getTile;
-
+//create a comment in the db
 const createComment = function(comments, user_id) {
   const queryString = `
   INSERT INTO comments (comment, user_id, tile_id)
@@ -206,6 +210,7 @@ const createComment = function(comments, user_id) {
 }
 exports.createComment = createComment;
 
+//get comments from the db matching user id
 const getComments = function(tileId) {
   const queryString = `
   SELECT comments.comment, users.name
@@ -227,6 +232,7 @@ const getComments = function(tileId) {
 }
 exports.getComments = getComments;
 
+//create a rating in the db
 const createRating = function(rating, user_id) {
   const queryString = `
   INSERT INTO ratings (rating, user_id, tile_id)
@@ -245,6 +251,7 @@ const createRating = function(rating, user_id) {
 }
 exports.createRating = createRating;
 
+//get a rating from the db
 const getRating = function(tileId) {
   const queryString = `
   SELECT round(avg(rating), 1)
@@ -256,17 +263,15 @@ const getRating = function(tileId) {
   return pool.query(queryString, values)
   .then(res => {
     if (res.rows.length){
-      console.log(`resrowsgetrating ${JSON.stringify(res.rows)}`);
       return res.rows;
     } else {
-      console.log(`null`)
       return null;
     }
   });
 }
 exports.getRating = getRating;
 
-
+//create likes in the db
 const createLikes = function(likes, user_id, tile_id) {
   const queryString = `
   INSERT INTO likes (is_like, user_id, tile_id)
@@ -279,7 +284,6 @@ const createLikes = function(likes, user_id, tile_id) {
     if (res.rows.length){
       return res.rows;
     } else {
-      console.log(`null`)
       return null;
     }
   });

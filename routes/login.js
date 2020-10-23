@@ -4,6 +4,8 @@ const { getUserWithEmail } = require('../database');
 const bcrypt = require('bcrypt');
 const cookieSession = require('cookie-session');
 
+// Allows user to login by comparing user email and hased password with the database, redirects to home page if successful
+
 module.exports = function(router, database) {
   router.get("/", (req, res) => {
     res.render("login");

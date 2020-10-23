@@ -4,6 +4,8 @@ const { getTile, getRating } = require('../database');
 const { getUserWithId } = require('../database');
 const { getComments } = require('../database');
 
+//Puts a specific tile, user info, tile ratings, and likes into a templateVars and renders
+
 module.exports = function(router, database) {
     router.get("/:id", (req, res) => {
       if (!req.session.userId) {

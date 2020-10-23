@@ -9,13 +9,13 @@
         <% if (user) { %>
           <div class="name-show">
             <form method="POST" action="/logout" class="name-show">
-            <a id="name" class=“nav-item nav-link”>Hey, <%= user.name%>!</a>
+            <a id="name" class=“nav-item nav-link” href="/profile">Hey, <%= user.name%>!</a>
             <button type="submit" id="logout" class="btn">Logout</button></form>
           </div>
           <% } %>
 
-        <a class="btn" href="/tiles">My Tiles</a>
-        <a class="btn" href="/create">Create a Tile</a>
+        <a class="btn" id="my-tiles" href="/tiles">My Tiles</a>
+        <a class="btn" id="create-tile" href="/create">Create a Tile</a>
       </div>
     </div>
     </div>

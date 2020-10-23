@@ -7,6 +7,8 @@ const cookieSession = require('cookie-session');
 module.exports = function(router, database) {
   router.get("/", (req, res) => {
 
+    //This function gathers the user data and creates a tile with given information
+
       const userId = req.session.userId;
       getUserWithId(userId)
         .then(user => {

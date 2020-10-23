@@ -3,6 +3,7 @@ const router  = express.Router();
 const { addUser } = require('../database');
 const bcrypt = require('bcrypt');
 
+// Adds a new user into the database, encrypting its password in the process
 
 module.exports = (router, database) => {
   router.get("/", (req, res) => {

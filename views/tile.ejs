@@ -66,13 +66,14 @@
       </section>
 
         <section id="comments-container" class="commentsection">
-        </section></div>
+
       <% for(let comment in comments) { %>
-      <div class="card-body">
-        <h5 class="card-text"><%= (comments[comment].name) %></h5>
-        <p class="card-text"><%= (comments[comment].comment) %></p>
+      <div class="indcomment">
+        <h5 class="card-comment1">   User: <%= (comments[comment].name) %></h5>
+        <p class="card-comment2">   <%= (comments[comment].comment) %></p>
       </div>
       <% } %>
+    </section>
     </div>
 
   </body>

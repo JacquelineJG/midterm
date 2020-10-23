@@ -6,6 +6,8 @@ const cookieSession = require('cookie-session');
 
 module.exports = function(router, database) {
 
+  //Comment function, creates comment and appends to specified tile
+
   router.post("/", (req, res) => {
     const comments = req.body;
     const user_id = req.session.userId;
